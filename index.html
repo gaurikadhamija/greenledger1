@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ग्रीनLedger — Evidence-Backed Sustainability Intelligence</title>
+    <meta name="description" content="Editorial sustainability intelligence platform with transparent, evidence-backed energy audits and Green Scorecards." />
+    <meta property="og:title" content="ग्रीनLedger — Evidence-Backed Sustainability Intelligence" />
+    <meta property="og:description" content="Editorial sustainability intelligence platform with transparent, evidence-backed energy audits and Green Scorecards." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Cormorant Garamond, Poppins, JetBrains Mono, Noto Serif Devanagari -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Instant file:// offline launcher: if opened directly from downloaded zip, immediately launch the bundled single-file website -->
+    <script>
+      (function() {
+        if (window.location.protocol === 'file:') {
+          // Attempt seamless automatic redirection to the self-contained single-file bundle in ./dist/index.html
+          try {
+            window.location.replace('./dist/index.html');
+          } catch (e) {
+            console.log('Direct file link available via launcher button');
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-[#f4f0e5] text-[#21150f] antialiased selection:bg-[#eaceaa] selection:text-[#21150f]">
+    <div id="root">
+      <!-- Fallback container in case automatic file:// redirection is delayed by strict browser settings -->
+      <div id="offline-launcher-fallback" style="display:none; min-height: 100vh; background-color: #f4f0e5; color: #21150f; font-family: 'Poppins', sans-serif; padding: 40px 24px; text-align: center;">
+        <div style="max-width: 580px; margin: 40px auto; background: #fffefa; border: 1px solid #cfc7b4; border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(33,21,15,0.08);">
+          <div style="font-size: 32px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; color: #21150f; margin-bottom: 6px;">
+            <span style="color: #09453d;">ग्रीन</span>Ledger
+          </div>
+          <div style="font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #09453d; margin-bottom: 20px; font-weight: 600;">
+            DELHI CAMPUS SUSTAINABILITY INTELLIGENCE PLATFORM
+          </div>
+          <p style="font-size: 14px; color: #574539; line-height: 1.6; margin-bottom: 24px;">
+            You opened this project offline directly from the unzipped folder. Click the button below to load the complete website with all 3D specimens, interactive calculators, and the Delhi campus map:
+          </p>
+          <a href="./dist/index.html" style="display: inline-block; background: #09453d; color: #ffffff; padding: 14px 32px; border-radius: 9999px; text-decoration: none; font-size: 14px; font-weight: 600; box-shadow: 0 2px 10px rgba(9,69,61,0.25);">
+            Launch Complete Website (dist/index.html) →
+          </a>
+          <div style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #6f6052; margin-top: 24px; border-top: 1px solid #e0d9c6; padding-top: 16px;">
+            Developer mode: run <code>npm install && npm run dev</code> in this directory.
+          </div>
+        </div>
+      </div>
+      <script>
+        if (window.location.protocol === 'file:') {
+          var fb = document.getElementById('offline-launcher-fallback');
+          if (fb) fb.style.display = 'block';
+        }
+      </script>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

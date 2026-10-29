@@ -1,0 +1,8 @@
+{
+  "name": "Remix ग्रीनLedger",
+  "description": "Editorial sustainability intelligence platform with transparent, evidence-backed energy audits and Green Scorecards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

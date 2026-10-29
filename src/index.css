@@ -1,0 +1,293 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Pramaan exact color tokens */
+  --color-sand: #f4f0e5;
+  --color-paper: #f7f4e9;
+  --color-cream: #f0edde;
+  --color-surface: #fffefa;
+  --color-coffee: #34150f;
+  --color-ink: #21150f;
+  --color-ink-2: #574539;
+  --color-muted: #6f6052;
+  --color-signal: #960d41;
+  --color-verified: #09453d;
+  --color-mint: #57927f;
+  --color-mint-deep: #27544a;
+  --color-champagne: #eaceaa;
+  --color-taupe: #c8c1af;
+  --color-gold-ink: #6f5a1c;
+  --color-line: #cfc7b4;
+  --color-line-soft: #e0d9c6;
+}
+
+:root {
+  --sand: #f4f0e5;
+  --paper: #f7f4e9;
+  --cream: #f0edde;
+  --surface: #fffefa;
+  --coffee: #34150f;
+  --ink: #21150f;
+  --ink-2: #574539;
+  --muted: #6f6052;
+  --signal: #960d41;
+  --verified: #09453d;
+  --mint: #57927f;
+  --mint-deep: #27544a;
+  --champagne: #eaceaa;
+  --taupe: #c8c1af;
+  --gold-ink: #6f5a1c;
+  --line: #cfc7b4;
+  --line-soft: #e0d9c6;
+  --rule: rgba(52, 21, 15, 0.22);
+  --rule-soft: rgba(52, 21, 15, 0.12);
+}
+
+body {
+  font-family: "Poppins", system-ui, -apple-system, sans-serif;
+  background-color: var(--sand);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Pramaan section marker design (.pr-secmark) */
+.pr-secmark {
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+.pr-secmark__n {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+.pr-secmark__of {
+  color: var(--muted);
+  opacity: 0.75;
+}
+.pr-secmark__rule {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--line);
+}
+.pr-secmark__label {
+  color: var(--gold-ink);
+  font-weight: 600;
+}
+
+/* Pramaan Typography Headings */
+.st-h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.st-h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.st-h2 em, .st-h1 em, h1 em, h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--signal);
+}
+
+.st-lede {
+  color: var(--ink-2);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.65;
+  font-weight: 300;
+  text-wrap: pretty;
+}
+
+/* Pramaan Capabilities Card Outline offset styling */
+.pr-cap-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.pr-cap-card.is-active {
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+}
+
+/* 3D Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Continuous Vertical Telemetry Ticker */
+@keyframes telemetry-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+.animate-telemetry {
+  animation: telemetry-scroll 28s linear infinite;
+}
+.animate-telemetry:hover {
+  animation-play-state: paused;
+}
+
+/* Continuous Walking / Drifting Crowd Stream */
+@keyframes crowd-stream {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-crowd-stream {
+  animation: crowd-stream 45s linear infinite;
+}
+.animate-crowd-stream:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle Cartoon Character Walking/Bobbing Motion */
+@keyframes character-bob {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-1.5deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(1.2deg);
+  }
+}
+.animate-bob {
+  animation: character-bob 2.8s ease-in-out infinite;
+}
+
+/* Laser scan animation for technical document specimen */
+@keyframes pr-scan {
+  0% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(180px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.8; }
+}
+.animate-scanline {
+  animation: pr-scan 3.5s ease-in-out infinite;
+}
+
+/* Ambient Botanical Leaf Floating & Gentle Rustle Keyframes */
+@keyframes leaf-drift-1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate3d(50px, 180px, 0) rotate(42deg) scale(1);
+    opacity: 0.35;
+  }
+  85% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate3d(100px, 360px, 0) rotate(78deg) scale(0.92);
+    opacity: 0;
+  }
+}
+
+@keyframes leaf-drift-2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(25deg) scale(1.05);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.24;
+  }
+  60% {
+    transform: translate3d(-60px, 210px, 0) rotate(-30deg) scale(0.95);
+    opacity: 0.3;
+  }
+  88% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translate3d(-110px, 420px, 0) rotate(-55deg) scale(0.88);
+    opacity: 0;
+  }
+}
+
+@keyframes leaf-drift-3 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-18deg) scale(0.85);
+    opacity: 0;
+  }
+  22% {
+    opacity: 0.22;
+  }
+  55% {
+    transform: translate3d(45px, 150px, 0) rotate(32deg) scale(0.98);
+    opacity: 0.28;
+  }
+  82% {
+    opacity: 0.16;
+  }
+  100% {
+    transform: translate3d(85px, 300px, 0) rotate(58deg) scale(0.82);
+    opacity: 0;
+  }
+}
+
+@keyframes leaf-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(6deg) translateY(-2px);
+  }
+}
+
+.animate-leaf-sway {
+  animation: leaf-sway 4.5s ease-in-out infinite;
+}
+
+/* Print formatting for Scorecard */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
