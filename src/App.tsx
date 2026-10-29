@@ -57,6 +57,10 @@ export default function App() {
 
   // Refresh data from backend API
   const refreshBackendData = useCallback(async (campusId: string) => {
+    if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
+      setIsDataLoading(false);
+      return;
+    }
     try {
       setIsDataLoading(true);
       // Fetch latest campus directory with enriched stats
