@@ -19,11 +19,15 @@
     <script>
       (function() {
         if (window.location.protocol === 'file:') {
-          // Attempt seamless automatic redirection to the self-contained single-file bundle in ./dist/index.html
+          // Attempt automatic redirection to launch-app.html in the same directory, or dist/index.html
           try {
-            window.location.replace('./dist/index.html');
-          } catch (e) {
-            console.log('Direct file link available via launcher button');
+            window.location.replace('./launch-app.html');
+          } catch (e1) {
+            try {
+              window.location.href = './launch-app.html';
+            } catch (e2) {
+              console.log('Manual launcher displayed');
+            }
           }
         }
       })();
@@ -31,23 +35,43 @@
   </head>
   <body class="bg-[#f4f0e5] text-[#21150f] antialiased selection:bg-[#eaceaa] selection:text-[#21150f]">
     <div id="root">
-      <!-- Fallback container in case automatic file:// redirection is delayed by strict browser settings -->
+      <!-- Fallback container in case automatic file:// redirection is blocked by strict browser security -->
       <div id="offline-launcher-fallback" style="display:none; min-height: 100vh; background-color: #f4f0e5; color: #21150f; font-family: 'Poppins', sans-serif; padding: 40px 24px; text-align: center;">
-        <div style="max-width: 580px; margin: 40px auto; background: #fffefa; border: 1px solid #cfc7b4; border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(33,21,15,0.08);">
-          <div style="font-size: 32px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; color: #21150f; margin-bottom: 6px;">
+        <div style="max-width: 620px; margin: 40px auto; background: #fffefa; border: 1px solid #cfc7b4; border-radius: 20px; padding: 40px; box-shadow: 0 8px 30px rgba(33,21,15,0.08);">
+          <div style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: #e8f1ec; border-radius: 9999px; margin-bottom: 16px; border: 1px solid rgba(9,69,61,0.2);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#09453d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+            </svg>
+          </div>
+          <div style="font-size: 32px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; color: #21150f; margin-bottom: 4px;">
             <span style="color: #09453d;">ग्रीन</span>Ledger
           </div>
-          <div style="font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #09453d; margin-bottom: 20px; font-weight: 600;">
+          <div style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #09453d; margin-bottom: 20px; font-weight: 600; letter-spacing: 0.1em;">
             DELHI CAMPUS SUSTAINABILITY INTELLIGENCE PLATFORM
           </div>
           <p style="font-size: 14px; color: #574539; line-height: 1.6; margin-bottom: 24px;">
-            You opened this project offline directly from the unzipped folder. Click the button below to load the complete website with all 3D specimens, interactive calculators, and the Delhi campus map:
+            You opened <strong>index.html</strong> directly from an unzipped folder. Modern browsers restrict module scripts on local files. Click below to launch the complete self-contained application:
           </p>
-          <a href="./dist/index.html" style="display: inline-block; background: #09453d; color: #ffffff; padding: 14px 32px; border-radius: 9999px; text-decoration: none; font-size: 14px; font-weight: 600; box-shadow: 0 2px 10px rgba(9,69,61,0.25);">
-            Launch Complete Website (dist/index.html) →
-          </a>
-          <div style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #6f6052; margin-top: 24px; border-top: 1px solid #e0d9c6; padding-top: 16px;">
-            Developer mode: run <code>npm install && npm run dev</code> in this directory.
+
+          <div style="display: flex; flex-direction: column; gap: 12px; max-width: 420px; margin: 0 auto 28px;">
+            <a href="./launch-app.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #09453d; color: #ffffff; padding: 14px 28px; border-radius: 9999px; text-decoration: none; font-size: 14px; font-weight: 600; box-shadow: 0 4px 14px rgba(9,69,61,0.25);">
+              <span>Open GreenLedger App (launch-app.html) →</span>
+            </a>
+            <a href="./dist/index.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #f0edde; color: #21150f; border: 1px solid #cfc7b4; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-size: 13px; font-weight: 500;">
+              <span>Alternative Link: dist/index.html</span>
+            </a>
+          </div>
+
+          <div style="background: #f7f4e9; border: 1px solid #cfc7b4; border-radius: 12px; padding: 16px; text-align: left; font-size: 12px; color: #574539; margin-bottom: 16px;">
+            <div style="font-weight: 600; color: #21150f; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+              ⚡ 1-CLICK DESKTOP LAUNCHERS:
+            </div>
+            <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+              <li><strong>Windows:</strong> Double-click <code>start-app.bat</code> in this folder.</li>
+              <li><strong>macOS / Linux:</strong> Double-click or run <code>./start-app.sh</code> in terminal.</li>
+              <li><strong>Full Dev Server:</strong> Run <code>npm install && npm run dev</code> for local Express server.</li>
+            </ul>
           </div>
         </div>
       </div>

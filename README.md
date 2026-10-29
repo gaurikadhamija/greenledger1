@@ -52,13 +52,20 @@ Every kilowatt-hour, carbon equivalent, and renewable offset is tied to verifiab
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) (version 18+ or 20+ recommended)
-- [npm](https://www.npmjs.com/) or [bun](https://bun.sh/)
+### ⚡ Instant Offline Launch (If you downloaded the ZIP)
 
-### 1. Clone or Download Repository
+You can run the entire application **immediately without installing Node.js**:
+- **Any Browser:** Double-click `launch-app.html` in the root folder.
+- **Windows:** Double-click `start-app.bat`.
+- **macOS / Linux:** Double-click or run `./start-app.sh`.
+- If you open `index.html`, it will automatically redirect you to `launch-app.html` or display the 1-click launcher.
+
+---
+
+### 💻 Developer Mode (With Full-Stack Express Server)
+
+### 1. Clone or Extract Project
 ```bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
 cd greenledger
 ```
 
